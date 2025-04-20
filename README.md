@@ -1,30 +1,121 @@
-# Tetris game requirements
+# React Tetris Game
 
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
+A modern implementation of the classic Tetris game built with React and TypeScript.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/aarifislams-projects/v0-tetris-game-requirements)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/opTum9iRfS8)
+## Features
 
-## Overview
+- Classic Tetris gameplay
+- Increasing difficulty as you level up
+- Row clearing animations
+- Shadow projection showing where pieces will land
+- Score tracking with classic Tetris scoring system
+- Next piece preview
 
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+\`\`\`bash
+git clone https://github.com/yourusername/react-tetris.git
+cd react-tetris
+\`\`\`
+
+2. Install dependencies:
+\`\`\`bash
+npm install
+# or
+yarn
+\`\`\`
+
+3. Start the development server:
+\`\`\`bash
+npm run dev
+# or
+yarn dev
+\`\`\`
+
+4. Open your browser and navigate to `http://localhost:5173`
+
+## How to Play
+
+- Use the arrow keys to move and rotate pieces
+- Left/Right: Move piece horizontally
+- Up: Rotate piece
+- Down: Soft drop (move piece down faster)
+- Space: Hard drop (instantly place the piece)
+- P: Pause/Resume game
 
 ## Deployment
 
-Your project is live at:
+To build the project for production:
 
-**[https://vercel.com/aarifislams-projects/v0-tetris-game-requirements](https://vercel.com/aarifislams-projects/v0-tetris-game-requirements)**
+\`\`\`bash
+npm run build
+# or
+yarn build
+\`\`\`
 
-## Build your app
+The build files will be located in the `dist` directory, ready to be deployed to GitHub Pages or any other static hosting service.
 
-Continue building your app on:
+## Project Structure
 
-**[https://v0.dev/chat/projects/opTum9iRfS8](https://v0.dev/chat/projects/opTum9iRfS8)**
+\`\`\`
+src/
+├── components/       # React components
+├── hooks/            # Custom React hooks
+├── utils/            # Utility functions
+├── styles/           # CSS and style files
+├── App.tsx           # Main application component
+└── index.tsx         # Application entry point
+\`\`\`
 
-## How It Works
+## Technologies Used
 
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+- React
+- TypeScript
+- Tailwind CSS
+- Vite
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- Inspired by the classic Tetris game
+- Built with modern React practices and TypeScript
+\`\`\`
+
+Let's create a simple .gitignore file:
+
+```gitignore file=".gitignore"
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
