@@ -5,11 +5,14 @@ import GameBoard from "./GameBoard"
 import GameStats from "./GameStats"
 import NextPiece from "./NextPiece"
 import Controls from "./Controls"
-import { Button } from "../components/ui/button"
+import MobileControls from "./MobileControls"
+import { Button } from "./ui/button"
 import useTetris from "../hooks/useTetris"
+import useIsMobile from "../hooks/useIsMobile"
 
 export default function TetrisGame() {
   const [gameStarted, setGameStarted] = useState(false)
+  const isMobile = useIsMobile()
 
   const {
     board,
@@ -85,29 +88,46 @@ export default function TetrisGame() {
           </Button>
         </div>
       ) : (
-        <div className="flex flex-col md:flex-row gap-8">
-          {/* Game board */}
-          <GameBoard board={board} clearedRows={clearedRows} />
+        <>
+          <div className="flex flex-col md:flex-row gap-4 md:gap-8 w-full max-w-4xl mx-auto">
+            {/* Game board */}
+            <div className="flex justify-center md:justify-start md:flex-1">
+              <GameBoard board={board} clearedRows={clearedRows} />
+            </div>
 
-          {/* Game info */}
-          <div className="flex flex-col gap-4">
-            <GameStats score={score} lines={lines} level={level} />
+            {/* Game info */}
+            <div className="flex flex-row md:flex-col justify-center md:justify-start gap-4 flex-wrap md:flex-nowrap">
+              <GameStats score={score} lines={lines} level={level} />
 
-            <NextPiece piece={nextPiece} />
+              <NextPiece piece={nextPiece} />
 
-            <Controls />
+              <div className="hidden md:block">
+                <Controls />
+              </div>
 
-            <div className="flex gap-2">
-              <Button onClick={initGame} className="bg-green-600 hover:bg-green-700">
-                {gameOver ? "Restart" : "New Game"}
-              </Button>
+              <div className="flex gap-2 justify-center md:justify-start">
+                <Button onClick={initGame} className="bg-green-600 hover:bg-green-700">
+                  {gameOver ? "Restart" : "New Game"}
+                </Button>
 
-              <Button onClick={togglePause} className="bg-blue-600 hover:bg-blue-700" disabled={gameOver}>
-                {paused ? "Resume" : "Pause"}
-              </Button>
+                <Button onClick={togglePause} className="bg-blue-600 hover:bg-blue-700" disabled={gameOver}>
+                  {paused ? "Resume" : "Pause"}
+                </Button>
+              </div>
             </div>
           </div>
-        </div>
+
+          {/* Mobile Controls */}
+          {gameStarted && !gameOver && !paused && (
+            <MobileControls
+              onMoveLeft={() => movePiece(-1)}
+              onMoveRight={() => movePiece(1)}
+              onRotate={rotatePiece}
+              onSoftDrop={dropPiece}
+              onHardDrop={hardDropPiece}
+            />
+          )}
+        </>
       )}
 
       {gameOver && <div className="mt-4 text-xl font-bold text-red-500">Game Over!</div>}

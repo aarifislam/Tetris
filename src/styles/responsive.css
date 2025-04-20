@@ -1,0 +1,18 @@
+/* Mobile-first responsive styles */
+@media (max-width: 768px) {
+  html,
+  body {
+    overflow-x: hidden;
+    touch-action: manipulation;
+  }
+
+  /* Prevent double-tap zoom on mobile */
+  button {
+    touch-action: manipulation;
+  }
+}
+
+/* Prevent pull-to-refresh on mobile */
+body {
+  overscroll-behavior-y: contain;
+}
